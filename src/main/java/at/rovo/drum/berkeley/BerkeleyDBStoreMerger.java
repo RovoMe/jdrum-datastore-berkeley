@@ -59,7 +59,7 @@ public class BerkeleyDBStoreMerger<V extends Serializable, A extends Serializabl
      * @throws DrumException
      *         Thrown if the database could not get initialized
      */
-    BerkeleyDBStoreMerger(String drumName, Class<V> valueClass) throws DrumException
+    public BerkeleyDBStoreMerger(String drumName, Class<V> valueClass) throws DrumException
     {
         super(drumName, valueClass);
 
