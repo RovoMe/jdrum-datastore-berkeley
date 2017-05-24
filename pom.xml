@@ -11,6 +11,23 @@
 
     <artifactId>jdrum-datastore-berkeley</artifactId>
 
+    <properties>
+        <sleepycat.version>5.0.84</sleepycat.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>oracleReleases</id>
+            <name>Oracle Released Java Packages</name>
+            <url>http://download.oracle.com/maven</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots/>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>at.rovo</groupId>

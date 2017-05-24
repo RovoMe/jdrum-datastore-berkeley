@@ -17,10 +17,10 @@ import com.sleepycat.je.ExceptionListener;
 import com.sleepycat.je.OperationStatus;
 import java.io.File;
 import java.io.Serializable;
+import java.lang.invoke.MethodHandles;
 import java.util.List;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <em>BerkeleyDBStoreMerger</em> uses a backing Berkeley DB to check keys for their uniqueness and merges data that
@@ -40,7 +40,7 @@ public class BerkeleyDBStoreMerger<V extends Serializable, A extends Serializabl
         extends DataStoreMerger<V, A> implements ExceptionListener
 {
     /** The logger of this class **/
-    private final static Logger LOG = LogManager.getLogger(BerkeleyDBStoreMerger.class);
+    private final static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     /** Berkeley's environment object **/
     private Environment environment = null;
@@ -119,8 +119,7 @@ public class BerkeleyDBStoreMerger<V extends Serializable, A extends Serializabl
     @Override
     public void exceptionThrown(ExceptionEvent exEvent)
     {
-        LOG.error("{} - Berkeley DB Exception!", this.drumName);
-        LOG.catching(Level.ERROR, exEvent.getException());
+        LOG.error("[" + this.drumName + "] - Berkeley DB Exception!", exEvent);
     }
 
     @Override
